@@ -35,9 +35,9 @@ public class UserDaoTest {
 
     @Before
     public void setUp() {
-        this.user1 = new User("gyumee", "박성철", "springno1", Level.BASIC, 1, 0);
-        this.user2 = new User("leegw700", "이길원", "springno2", Level.SILVER, 55, 10);
-        this.user3 = new User("bumjin", "박범진", "springno3", Level.GOLD, 100, 40);
+        this.user1 = new User("gyumee", "박성철", "springno1", Level.BASIC, 1, 0, "gyumee@ksug.org");
+        this.user2 = new User("leegw700", "이길원", "springno2", Level.SILVER, 55, 10, "leegw700@ksug.org");
+        this.user3 = new User("bumjin", "박범진", "springno3", Level.GOLD, 100, 40, "bumjin@ksug.org");
     }
     @Test
     public void addAndGet() {
@@ -67,6 +67,7 @@ public class UserDaoTest {
         user1.setLevel(Level.GOLD);
         user1.setLogin(1000);
         user1.setRecommend(999);
+        user1.setEmail("springno6@ksug.org");
         dao.update(user1);
 
         User user1update = dao.get(user1.getId());
@@ -155,37 +156,4 @@ public class UserDaoTest {
     public static void main(String[] args) {
         JUnitCore.main("springbook.user.dao.UserDaoTest");
     }
-    /**
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        /**
-        AnnotationConfigApplicationContext context =
-                new AnnotationConfigApplicationContext(CountingDaoFactory.class);
-
-
-        ApplicationContext context =
-                new GenericXmlApplicationContext("/applicationContext.xml");
-
-        UserDao dao = context.getBean("userDao", UserDao.class);
-
-        User user = new User();
-        user.setId("gildong");
-        user.setName("홍길동");
-        user.setPassword("married");
-
-        dao.add(user);
-
-        System.out.println(user.getId() + " 등록 성공");
-
-        User user2 = dao.get(user.getId());
-        if(!user.getName().equals(user2.getName())) {
-            System.out.println("테스트 실패");
-        }
-        else if(!user.getPassword().equals(user2.getPassword())) {
-            System.out.println("테스트 실패(password)");
-        }
-        else {
-            System.out.println("조회 테스트 성공");
-        }
-    }
-    */
 }
