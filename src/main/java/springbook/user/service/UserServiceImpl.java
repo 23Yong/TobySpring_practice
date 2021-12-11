@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    private void sendUpgradEMail(User user) {
+    private void sendUpgradeEMail(User user) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(user.getEmail());
         mailMessage.setFrom("useradmin@ksug.org");
@@ -61,6 +61,6 @@ public class UserServiceImpl implements UserService {
     protected void upgradeLevel(User user) {
         user.upgradeLevel();
         userDao.update(user);
-        sendUpgradEMail(user);
+        sendUpgradeEMail(user);
     }
 }
